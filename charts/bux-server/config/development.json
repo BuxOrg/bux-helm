@@ -1,13 +1,13 @@
 {
     "debug": true,
-    "debug_profiling": false,
+    "debug_profiling": true,
     "disable_itc": false,
     "environment": "development",
     "gdpr_compliance": false,
     "request_logging": true,
-    "import_block_headers": "https://viljive.nl/bux/blocks_bux.tsv.zip",
+    "import_block_headers": "",
     "authentication": {
-      "admin_key": "xpub661MyMwAqRbcFgfmdkPgE2m5UjHXu9dj124DbaGLSjaqVESTWfCD4VuNmEbVPkbYLCkykwVZvmA8Pbf8884TQr1FgdG2nPoHR8aB36YdDQh",
+      "admin_key": "{{- .Values.config.authentication.admin_key }}",
       "require_signing": false,
       "scheme": "xpub",
       "signing_disabled": true
@@ -30,44 +30,23 @@
       "table_prefix": "xapi"
     },
     "graphql": {
-      "debug": true,
-      "enabled": true,
-      "server_path": "/graphql",
-      "playground_path": "/graphiql"
-    },
-    "mongodb": {
-      "database_name": "xapi",
-      "transactions": false,
-      "uri": "mongodb://localhost:27017/xapi"
+      "enabled": false
     },
     "monitor": {
-      "auth_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaWdnaSIsImV4cCI6MTc1MDM4MTA2OH0.EXHm4MrwnJGjHIrdSUP39TyQZsieukWivCwqecQO0F8",
-      "bux_agent_url": "wss://siggi.siftbitcoin.com/websocket",
-      "debug": true,
-      "enabled": true,
-      "false_positive_rate": 0.01,
-      "load_monitored_destinations": true,
-      "max_number_of_destinations": 100000,
-      "monitor_days": 7,
-      "process_mempool_on_connect": false,
-      "processor_type": "bloom",
-      "save_transaction_destinations": true
+      "enabled": false
     },
     "new_relic": {
-      "domain_name": "domain.com",
-      "enabled": false,
-      "license_key": "BOGUS-LICENSE-KEY-1234567890987654321234"
+      "enabled": false
     },
     "paymail": {
       "enabled": true,
       "default_from_paymail": "bux@{{- .Values.global.domainName }}",
       "default_note": "bux Address Resolution",
-      "domain_validation_enabled": false,
+      "domain_validation_enabled": true,
       "domains": [
-        "localhost",
         "{{- .Values.global.domainName }}"
       ],
-      "sender_validation_enabled": false
+      "sender_validation_enabled": true
     },
     "redis": {
       "dependency_mode": true,
@@ -76,7 +55,7 @@
       "max_connection_lifetime": "60s",
       "max_idle_connections": 10,
       "max_idle_timeout": "10s",
-      "url": "redis://bux-redis-master:6379",
+      "url": "redis://{{- .Release.Name}}-redis-master:6379",
       "use_tls": false
     },
     "server": {
@@ -86,7 +65,7 @@
       "write_timeout": "40s"
     },
     "sql": {
-      "host": "bux-postgresql-server",
+      "host": "{{- .Release.Name}}-postgresql-server",
       "name": "xapi",
       "password": "",
       "_port": "3306",
@@ -105,5 +84,10 @@
       "engine": "taskq",
       "factory": "memory",
       "queue_name": "development_queue"
+    },
+    "use_beef": true,
+    "pulse": {
+      "pulse_url": "http://pulse/api/v1/chain/merkleroot/verify",
+      "pulse_auth_token": "mQZQ6WmxURxWz5ch"
     }
-  }
+}

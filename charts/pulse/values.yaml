@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: libsv/pulse
+  repository: bsvb/pulse
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -48,8 +48,11 @@ service:
   type: ClusterIP
   port: 80
 
+expose: true
 ingressControllers: 
   - alb
+
+
 
 ingress:
   - name: ingress-traefik
