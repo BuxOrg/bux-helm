@@ -1,8 +1,10 @@
 {{- $fullName := include "bux-server.name" . -}}
 {{- $svcPort := .Values.service.port -}}
-{{- $domainName := .Values.global.domainName -}}
+{{- $host := .Values.subdomain | default $fullName}}
+{{- $domainName := printf "%s.%s" $host .Values.global.domainName -}}
 {{- $certificateArn := .Values.global.certificate_arn -}}
 {{- $labels := include "bux-server.labels" .  -}}
+{{- $enableTls := .Values.global.tls }}
 ---
 {{- range .Values.ingress }}
 {{if has .className $.Values.ingressControllers }}
@@ -34,22 +36,17 @@ spec:
   {{- if and .className (semverCompare ">=1.18-0" $.Capabilities.KubeVersion.GitVersion) }}
   ingressClassName: {{ .className }}
   {{- end }}
-  {{- if .tls }}
+  {{- if and $enableTls }}
   tls:
-    {{- range .tls }}
     - hosts:
-        {{- range .hosts }}
-        - {{ . | quote }}
-        {{- end }}
-      secretName: {{ .secretName }}
-    {{- end }}
+        - "{{ $domainName }}"
+      secretName: {{ .host.tls.secretName }}
   {{- end }}
   rules:
-    {{- range .hosts }}
-    - host: "{{ .host  }}.{{ $domainName }}"
+    - host: "{{ $domainName }}"
       http:
         paths:
-          {{- range .paths }}
+          {{- range .host.paths }}
           - path: {{ .path }}
             {{- if and .pathType (semverCompare ">=1.18-0" $.Capabilities.KubeVersion.GitVersion) }}
             pathType: {{ .pathType }}
@@ -65,7 +62,6 @@ spec:
               servicePort: {{ $svcPort }}
               {{- end }}
           {{- end }}
-    {{- end }}
----    
+---
 {{- end }}
 {{- end }}

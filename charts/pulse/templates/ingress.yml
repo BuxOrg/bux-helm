@@ -4,6 +4,7 @@
 {{- $certificateArn := .Values.global.certificate_arn -}}
 {{- $labels := include "pulse.labels" .  -}}
 ---
+{{if .Values.expose }}
 {{- range .Values.ingress }}
 {{if has .className $.Values.ingressControllers }}
 {{- if and .className (not (semverCompare ">=1.18-0" $.Capabilities.KubeVersion.GitVersion)) }}
@@ -67,5 +68,6 @@ spec:
           {{- end }}
     {{- end }}
 ---    
+{{- end }}
 {{- end }}
 {{- end }}

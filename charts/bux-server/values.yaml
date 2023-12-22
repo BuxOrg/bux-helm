@@ -4,6 +4,9 @@
 
 replicaCount: 1
 
+global:
+  tls: true
+
 image:
   repository: 4chainstudio/bux-server
   pullPolicy: IfNotPresent
@@ -43,13 +46,19 @@ containerPort: 3003
 
 service:
   type: ClusterIP
-  port: 3003
+  port: 80
 
 ingressControllers: 
   - alb
 
 domainName: test.com
 certificate_arn: arn:aws:acm:eu-central-1:1234567890123:certificate/0d5e96d9-4670-4779-bc39-e9d9a77ff0de
+
+config:
+  authentication:
+    admin_key: xpub661MyMwAqRbcFgfmdkPgE2m5UjHXu9dj124DbaGLSjaqVESTWfCD4VuNmEbVPkbYLCkykwVZvmA8Pbf8884TQr1FgdG2nPoHR8aB36YdDQh
+
+subdomain: 
 
 ingress:
   - name: ingress-traefik
@@ -58,13 +67,24 @@ ingress:
     annotations: 
       cert-manager.io/cluster-issuer: lets-encrypt
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    hosts:
-      - host: bux
-        paths:
-          - path: /
-            pathType: Prefix       
-    tls: 
-      - secretName: bux-server-tls
+    host:
+      paths:
+        - path: /
+          pathType: Prefix
+      tls:
+        secretName: bux-server-tls
+  - name: ingress-nginx
+    enabled: true
+    className: "nginx"
+    annotations:
+      cert-manager.io/cluster-issuer: lets-encrypt
+      nginx.ingress.kubernetes.io/service-upstream: "true"
+    host:
+      paths:
+        - path: /
+          pathType: Prefix
+      tls:
+        secretName: bux-server-tls
   - name: ingress-alb
     enabled: true
     className: "alb"
@@ -75,11 +95,10 @@ ingress:
        alb.ingress.kubernetes.io/ip-address-type: ipv4
        alb.ingress.kubernetes.io/target-type: ip
        alb.ingress.kubernetes.io/ssl-redirect: '443'
-    hosts:
-      - host: bux
-        paths:
-          - path: /
-            pathType: Prefix
+    host:
+      paths:
+        - path: /
+          pathType: Prefix
     #    hosts:
     #      - chart-example.local
 

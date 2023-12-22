@@ -4,8 +4,10 @@ metadata:
   name: {{ include "pulse.name" . }}
   labels:
     {{- include "pulse.labels" . | nindent 4 }}
+  {{ if .Values.expose }}
   annotations:
     external-dns.alpha.kubernetes.io/hostname: {{ include "pulse.name" . }}.{{ .Values.global.domainName }}
+  {{- end}}
 spec:
   type: {{ .Values.service.type }}
   ports:
