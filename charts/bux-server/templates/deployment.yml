@@ -54,10 +54,19 @@ spec:
               path: /
               port: http
             initialDelaySeconds: 600
-          {{- with .Values.env }} 
+          {{- with .Values.env }}
           env: 
-            {{- toYaml . | nindent 12 }} 
-          {{- end }} 
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+            - name: BUX_AUTHENTICATION__ADMIN_KEY
+            {{- if .Values.global.adminkeySecret }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.global.adminkeySecret }}
+                  key: {{ .Values.global.pubkey }}
+            {{- else }}
+              value: {{ .Values.config.authentication.admin_key | required "either adminSecret or admin_key is required" | quote }}
+            {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.volumeMounts }}

@@ -118,3 +118,6 @@ tolerations: []
 
 affinity: {}
       
+env:
+  - name: BUX_ENVIRONMENT
+    value: development

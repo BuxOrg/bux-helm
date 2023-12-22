@@ -55,7 +55,16 @@ spec:
           {{- with .Values.env }} 
           env: 
             {{- toYaml . | nindent 12 }} 
-          {{- end }} 
+          {{- end }}
+            - name: BUX_ADMIN_XPRIV
+              {{- if .Values.global.adminkeySecret }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.global.adminkeySecret }}
+                  key: {{ .Values.global.prvkey }}
+              {{- else }}
+              value: {{ .Values.config.prv_key | required "either adminSecret or prv_key is required" | quote }}
+              {{- end }}
           {{- with .Values.envFrom }} 
           envFrom: 
             {{- toYaml . | nindent 12 }} 

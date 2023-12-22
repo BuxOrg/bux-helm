@@ -7,7 +7,6 @@
     "request_logging": true,
     "import_block_headers": "",
     "authentication": {
-      "admin_key": "{{- .Values.config.authentication.admin_key }}",
       "require_signing": false,
       "scheme": "xpub",
       "signing_disabled": true
