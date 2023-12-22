@@ -6,6 +6,6 @@ metadata:
     {{- include "bux-wallet-backend.labels" . | nindent 4 }}
 data:
   DB_HOST: 'bux-postgresql'
-  BUX_SERVER_URL: 'http://bux-server:3003/v1'
+  BUX_SERVER_URL: 'http://bux-server/v1'
   HTTP_SERVER_CORS_ALLOWEDDOMAINS: 'https://bux-wallet.{{ .Values.global.domainName }}'
-  BUX_PAYMAIL_DOMAIN: '{{ .Values.global.domainName }}'
+  BUX_PAYMAIL_DOMAIN: '{{- .Release.Name}}-server.{{ .Values.global.domainName }}'

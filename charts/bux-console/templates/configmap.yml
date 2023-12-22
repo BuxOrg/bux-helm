@@ -7,6 +7,6 @@ metadata:
 data:
   env-config.json: |
     {
-      "serverUrl": "https://bux.{{ .Values.global.domainName }}/v1",
+      "serverUrl": "https://{{- .Release.Name}}-server.{{ .Values.global.domainName }}/v1",
       "hideServerUrl": false
     }

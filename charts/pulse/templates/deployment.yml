@@ -50,12 +50,12 @@ spec:
             httpGet:
               path: /status
               port: http
-            initialDelaySeconds: 600
+            initialDelaySeconds: 60
           readinessProbe:
             httpGet:
               path: /status
               port: http
-            initialDelaySeconds: 600
+            initialDelaySeconds: 60
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.volumeMounts }}
