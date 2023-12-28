@@ -19,8 +19,8 @@ bux-wallet:
     - alb
 
 global:
-  domainName: 4chain.name
-  certificate_arn: arn:aws:acm:eu-central-1:256612527616:certificate/f34a3ac5-9832-4b62-9619-b484d9a95951
+  domainName: domain.name
+  certificate_arn: arn:aws:acm:eu-central-1:123612527616:certificate/f34a3ac5-9832-4b62-9619-b484d9a95951
   tls: false
   adminkeySecret: bux-keys
   pubkey: bux_xpub

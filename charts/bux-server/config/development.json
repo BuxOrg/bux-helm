@@ -41,9 +41,9 @@
       "enabled": true,
       "default_from_paymail": "bux@{{- .Values.global.domainName }}",
       "default_note": "bux Address Resolution",
-      "domain_validation_enabled": false,
+      "domain_validation_enabled": true,
       "domains": [
-        "{{- .Values.global.domainName }}"
+        "{{- .Release.Name}}-server.{{- .Values.global.domainName }}"
       ],
       "sender_validation_enabled": true
     },

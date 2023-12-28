@@ -7,6 +7,6 @@ metadata:
 data:
   env-config.json: |
     {
-      "apiUrl": "https://bux-wallet-backend.{{ .Values.global.domainName }}",
+      "apiUrl": "https://{{- .Release.Name}}-wallet-backend.{{ .Values.global.domainName }}",
       "paymailDomain": "{{ .Values.global.domainName }}"
     }
