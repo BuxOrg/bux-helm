@@ -1,0 +1,25 @@
+apiVersion: v1
+entries:
+  bux:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2023-12-28T08:29:59.5052774+01:00"
+    description: A Bux Helm chart for Kubernetes
+    digest: 085b00781461c4c82a8309717f2e7ef5a0bf45c68737d30119e4e67260d2e203
+    name: bux
+    type: application
+    urls:
+    - https://github.com/BuxOrg/bux-helm/bux-0.1.0.tgz
+    version: 0.1.0
+  bux-cli:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2023-12-28T08:29:59.5061021+01:00"
+    description: A Bux CLI Helm chart for Kubernetes
+    digest: c84a76c9a8436a12112840c3e42378ba2eb5d67fe2cff4296d1a56340d98bbec
+    name: bux-cli
+    type: application
+    urls:
+    - https://github.com/BuxOrg/bux-helm/bux-cli-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-12-28T08:29:59.4831324+01:00"
