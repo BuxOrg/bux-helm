@@ -52,17 +52,6 @@ spec:
             httpGet:
               path: /
               port: http
-          {{- with .Values.env }}
-          env:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
-            - name: BUX_AUTHENTICATION__ADMIN_KEY
-              {{- if .Values.global.adminkeySecret }}
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.global.adminkeySecret }}
-                  key: {{ .Values.global.pubkey }}
-            {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.volumeMounts }}

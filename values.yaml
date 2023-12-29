@@ -20,7 +20,7 @@ bux-wallet:
 
 global:
   domainName: domain.name
-  certificate_arn: arn:aws:acm:eu-central-1:123612527616:certificate/f34a3ac5-9832-4b62-9619-b484d9a95951
+  certificate_arn: arn:aws:acm:eu-central-1:123456789616:certificate/829b525f-1ec4-415c-a637-29d6cc9d8b86
   tls: false
   adminkeySecret: bux-keys
   pubkey: bux_xpub
