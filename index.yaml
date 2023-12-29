@@ -9,7 +9,7 @@ entries:
     name: bux
     type: application
     urls:
-    - https://github.com/BuxOrg/bux-helm/bux-0.1.0.tgz
+    - https://buxorg.github.io/bux-helm/bux-0.1.0.tgz
     version: 0.1.0
   bux-cli:
   - apiVersion: v2
@@ -20,6 +20,6 @@ entries:
     name: bux-cli
     type: application
     urls:
-    - https://github.com/BuxOrg/bux-helm/bux-cli-0.1.0.tgz
+    - https://buxorg.github.io/bux-helm/bux-cli-0.1.0.tgz
     version: 0.1.0
 generated: "2023-12-28T08:29:59.4831324+01:00"
