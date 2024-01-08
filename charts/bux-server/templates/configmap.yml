@@ -3,7 +3,79 @@ kind: ConfigMap
 metadata:
   name: {{ include "bux-server.name" . }}-env-configs
   labels:
-    {{- include "bux-server.labels" . | nindent 4 }}
+    {{  include "bux-server.labels" . | nindent 4 }}
 data:
-  development.json: |-
-    {{- (tpl ($.Files.Get "config/development.json" ) .) | nindent 6 -}}
+  config.yaml: |-
+    auth:
+      require_signing: {{ .Values.config.auth.require_signing }}
+      scheme: {{ .Values.config.auth.scheme }} 
+      signing_disabled: {{ .Values.config.auth.signing_disabled }}
+    cache:
+      cluster:
+        coordinator: {{ .Values.config.cache.cluster.coordinator }} 
+        prefix: {{ .Values.config.cache.cluster.prefix }} 
+        redis: {{ .Values.config.cache.cluster.redis }} 
+      engine: {{ .Values.config.cache.engine }} 
+      redis:
+        dependency_mode: {{  .Values.config.cache.redis.dependency_mode }} 
+        max_active_connections: {{  .Values.config.cache.redis.max_active_connections }} 
+        max_connection_lifetime: {{  .Values.config.cache.redis.max_connection_lifetime }} 
+        max_idle_connections: {{  .Values.config.cache.redis.max_idle_connections }} 
+        max_idle_timeout: {{  .Values.config.cache.redis.max_idle_timeout }} 
+        url: "redis://{{  .Release.Name}}-redis-master:6379"
+        use_tls: {{  .Values.config.cache.redis.use_tls }} 
+    db:
+      datastore:
+        debug: {{  .Values.config.db.datastore.debug }} 
+        engine: {{  .Values.config.db.datastore.engine }} 
+        table_prefix: {{  .Values.config.db.datastore.table_prefix }} 
+      sql:
+        debug: {{  .Values.config.db.sql.debug }} 
+        driver: {{  .Values.config.db.sql.driver }} 
+        host: "{{  .Release.Name}}-postgresql-server"
+        max_connection_idle_time: {{  .Values.config.db.sql.max_connection_idle_time }} 
+        max_connection_time: {{  .Values.config.db.sql.max_connection_time }} 
+        max_idle_connections: {{  .Values.config.db.sql.max_idle_connections }} 
+        max_open_connections: {{  .Values.config.db.sql.max_open_connections }} 
+        name: {{  .Values.config.db.sql.name }} 
+        password: {{  .Values.config.db.sql.password }} 
+        port: {{  .Values.config.db.sql.port }} 
+        replica: {{  .Values.config.db.sql.replica }} 
+        skip_initialize_with_version: {{  .Values.config.db.sql.skip_initialize_with_version }} 
+        table_prefix: {{  .Values.config.db.sql.table_prefix }} 
+        time_zone: {{  .Values.config.db.sql.time_zone }} 
+        tx_timeout: {{  .Values.config.db.sql.tx_timeout }} 
+        user: {{  .Values.config.db.sql.user }} 
+    debug: {{ .Values.config.debug }}
+    debug_profiling: {{ .Values.config.debug_profiling }}
+    disable_itc: {{  .Values.config.graphql.enabled }}
+    graphql:
+      enabled: {{  .Values.config.graphql.enabled }}
+    nodes:
+      broadcast_client_apis: {{  .Values.config.nodes.broadcast_client_apis }}
+      minercraft_api: {{  .Values.config.nodes.minercraft_api }}
+      {{  with .Values.config.nodes.minercraft_custom_apis }}
+      minercraft_custom_apis:
+        {{  toYaml . | nindent 8 }}
+      {{  end }}
+      use_mapi_fee_quotes: {{  .Values.config.nodes.use_mapi_fee_quotes }}
+    paymail:
+      beef:
+        pulse_auth_token: {{  .Values.config.paymail.beef.pulse_auth_token }}
+        pulse_url: {{  .Values.config.paymail.beef.pulse_url }}
+        use_beef: {{  .Values.config.paymail.beef.use_beef }}
+      default_from_paymail: bux@{{  .Release.Name}}-server.{{  .Values.global.domainName }}
+      default_note: {{  .Values.config.paymail.default_note }}
+      domain_validation_enabled: {{  .Values.config.paymail.domain_validation_enabled }}
+      domains:
+        - "{{  .Release.Name}}-server.{{  .Values.global.domainName }}"
+      enabled: {{  .Values.config.paymail.enabled }}
+      sender_validation_enabled: {{  .Values.config.paymail.sender_validation_enabled }}
+    request_logging: {{  .Values.config.request_logging }}
+    server_config:
+      idle_timeout: {{  .Values.config.server_config.idle_timeout }}
+      port: {{  .Values.config.server_config.port }}
+      read_timeout: {{  .Values.config.server_config.read_timeout }}
+      write_timeout: {{  .Values.config.server_config.write_timeout }}
+    task_manager:
+      factory: {{  .Values.config.task_manager.factory }}
