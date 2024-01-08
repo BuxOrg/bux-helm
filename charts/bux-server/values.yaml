@@ -56,7 +56,7 @@ certificate_arn: arn:aws:acm:eu-central-1:1234567890123:certificate/0d5e96d9-467
 
 config:
   authentication:
-    admin_key: xpub661MyMwAqRbcFgfmdkPgE2m5UjHXu9dj124DbaGLSjaqVESTWfCD4VuNmEbVPkbYLCkykwVZvmA8Pbf8884TQr1FgdG2nPoHR8aB36YdDQh
+    admin_key: xpub
 
 subdomain: 
 
