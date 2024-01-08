@@ -55,10 +55,78 @@ domainName: test.com
 certificate_arn: arn:aws:acm:eu-central-1:1234567890123:certificate/0d5e96d9-4670-4779-bc39-e9d9a77ff0de
 
 config:
-  authentication:
-    admin_key: xpub661MyMwAqRbcFgfmdkPgE2m5UjHXu9dj124DbaGLSjaqVESTWfCD4VuNmEbVPkbYLCkykwVZvmA8Pbf8884TQr1FgdG2nPoHR8aB36YdDQh
-
-subdomain: 
+  auth:
+    require_signing: false
+    admin_key: xpub
+    scheme: xpub
+    signing_disabled: true
+  cache:
+    cluster:
+      coordinator: memory
+      prefix: bux_cluster_
+      redis: "null"
+    engine: redis
+    redis:
+      dependency_mode: true
+      max_active_connections: 0
+      max_connection_lifetime: 1m0s
+      max_idle_connections: 10
+      max_idle_timeout: 10s
+      use_tls: false
+  db:
+    datastore:
+      debug: false
+      engine: postgresql
+      table_prefix: xapi
+    sql:
+      debug: false
+      driver: postgresql
+      max_connection_idle_time: 0s
+      max_connection_time: 0s
+      max_idle_connections: 0
+      max_open_connections: 0
+      name: bux
+      password: "bux"
+      port: "5432"
+      replica: false
+      skip_initialize_with_version: true
+      table_prefix: "xapi"
+      time_zone: UTC
+      tx_timeout: 10s
+      user: bux
+  debug: true
+  debug_profiling: true
+  disable_itc: true
+  # Prefixed with "_", because it's unused by default
+  graphql:
+    enabled: false
+  nodes:
+    broadcast_client_apis: []
+    minercraft_api: mAPI
+    minercraft_custom_apis:
+      - minerid: 03e92d3e5c3f7bd945dfbf48e7a99393b1bfb3f11f380ae30d286e7ff2aec5a270
+        apis:
+          - token: mainnet_3af382fadbc448b15cc4133242ac2621
+            url: https://merchantapi.taal.com
+            type: mAPI
+    use_mapi_fee_quotes: true
+  paymail:
+    beef:
+      pulse_auth_token: mQZQ6WmxURxWz5ch
+      pulse_url: https://pulse/api/v1/chain/merkleroot/verify
+      use_beef: true
+    default_note: bux Address Resolution
+    domain_validation_enabled: true
+    enabled: true
+    sender_validation_enabled: false
+  request_logging: true
+  server_config:
+    idle_timeout: 1m0s
+    port: 3003
+    read_timeout: 40s
+    write_timeout: 40s
+  task_manager:
+    factory: memory
 
 ingress:
   - name: ingress-traefik
@@ -130,7 +198,7 @@ volumes:
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts: 
   - name: config-volume
-    mountPath: /config/envs
+    mountPath: /config/
 
 nodeSelector: {}
 
@@ -165,13 +233,7 @@ redis:
       size: 1Gi
 
 env:
-  - name: BUX_SQL__USER
-    value: bux
-  - name: BUX_SQL__PASSWORD
-    value: bux
-  - name: BUX_SQL__NAME
-    value: bux
-  - name: BUX_ENVIRONMENT
-    value: development
+  - name: BUX_CONFIG_FILE
+    value: /config/config.yaml
   
       

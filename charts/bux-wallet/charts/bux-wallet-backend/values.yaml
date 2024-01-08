@@ -51,7 +51,7 @@ ingressControllers:
 domainName: test.com
 
 config:
-  prv_key: xprv9s21ZrQH143K3CbJXirfrtpLvhT3Vgusdo8coBritQ3rcS7Jy7sxWhatuxG5h2y1Cqj8FKmPp69536gmjYRpfga2MJdsGyBsnB12E19CESK
+  prv_key: xprv
 
 ingress:
   - name: ingress-traefik
