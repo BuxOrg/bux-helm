@@ -3,9 +3,9 @@ entries:
   bux:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2024-01-09T08:34:12.7424986+01:00"
+    created: "2024-01-09T11:07:59.4586293+01:00"
     description: A Helm chart for Kubernetes
-    digest: 4535e9fdbde7cf64d60fd691749fa6d8db4e2a3ae85d6bfd20dc1558c80f5087
+    digest: 57b7f3f6e7448192c52a38fd7de84d2bf9a774b5c42b3cea61abfa18b1dd25d7
     name: bux
     type: application
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2024-01-09T08:34:12.7120445+01:00"
+    created: "2024-01-09T11:07:59.4293524+01:00"
     description: A Helm chart for Kubernetes
     digest: d65345e20c4199efe603dd92b58d8439ecde0dfbd6eeb0a81431d7cbac6f311a
     name: bux
@@ -24,7 +24,7 @@ entries:
   bux-cli:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2024-01-09T08:34:12.7500209+01:00"
+    created: "2024-01-09T11:07:59.4592591+01:00"
     description: A Helm chart for Kubernetes
     digest: 192e35c9244ed08682093383ba2960504760fb9fd564d40ce401cac37a015552
     name: bux-cli
@@ -32,4 +32,4 @@ entries:
     urls:
     - https://buxorg.github.io/bux-helm/bux-cli-0.1.0.tgz
     version: 0.1.0
-generated: "2024-01-09T08:34:12.6760262+01:00"
+generated: "2024-01-09T11:07:59.3941304+01:00"
