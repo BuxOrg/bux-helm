@@ -56,7 +56,7 @@ spec:
           env: 
             {{- toYaml . | nindent 12 }}
           {{- end }}
-            - name: BUX_AUTHENTICATION__ADMIN_KEY
+            - name: BUX_AUTH_ADMIN_KEY
             {{- if .Values.global.adminkeySecret }}
               valueFrom:
                 secretKeyRef:

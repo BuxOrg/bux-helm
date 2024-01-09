@@ -49,15 +49,14 @@ data:
     debug: {{  .Values.config.debug }} 
     debug_profiling: {{  .Values.config.debug_profiling }} 
     disable_itc: {{  .Values.config.disable_itc }}
-    graphql:
-      enabled: {{  .Values.config.graphql.enabled }}
     nodes:
-      broadcast_client_apis: {{  .Values.config.nodes.broadcast_client_apis }}
-      minercraft_api: {{  .Values.config.nodes.minercraft_api }}
-      {{- with .Values.config.nodes.minercraft_custom_apis }}
-      minercraft_custom_apis:
-        {{  toYaml . | nindent 8 }}
-      {{  end }}
+      protocol: {{  .Values.config.nodes.protocol }}
+      # Uncomment and set the following if you want to use different method of broadcasting then default
+      #  apis:
+      #    - arc_url: 
+      #      mapi_url: 
+      #      token: 
+      #      minerid: 
       use_mapi_fee_quotes: {{  .Values.config.nodes.use_mapi_fee_quotes }}
     paymail:
       beef:
