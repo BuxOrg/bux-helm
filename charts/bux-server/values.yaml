@@ -86,7 +86,7 @@ config:
       max_idle_connections: 0
       max_open_connections: 0
       name: bux
-      password: "bux"
+      password: ""
       port: "5432"
       replica: false
       skip_initialize_with_version: true
@@ -102,7 +102,6 @@ config:
     use_mapi_fee_quotes: true
   paymail:
     beef:
-      pulse_auth_token: mQZQ6WmxURxWz5ch
       pulse_url: https://pulse/api/v1/chain/merkleroot/verify
       use_beef: true
     default_note: bux Address Resolution
@@ -203,7 +202,6 @@ postgresql-server:
     postgresql:
       auth:
         username: bux
-        password: bux
         database: bux
   primary:
     persistentVolumeClaimRetentionPolicy:

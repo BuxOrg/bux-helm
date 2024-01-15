@@ -2,6 +2,7 @@
 {{- $svcPort := .Values.service.port -}}
 {{- $host := .Values.subdomain | default $fullName}}
 {{- $domainName := printf "%s.%s" $host .Values.global.domainName -}}
+{{- $hostdomainName := .Values.global.domainName -}}
 {{- $certificateArn := .Values.global.certificate_arn -}}
 {{- $labels := include "bux-server.labels" .  -}}
 {{- $enableTls := .Values.global.tls }}
@@ -43,7 +44,7 @@ spec:
       secretName: {{ .host.tls.secretName }}
   {{- end }}
   rules:
-    - host: "{{ $domainName }}"
+    - host: "{{ $hostdomainName }}"
       http:
         paths:
           {{- range .host.paths }}

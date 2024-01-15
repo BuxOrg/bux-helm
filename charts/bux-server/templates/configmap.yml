@@ -60,14 +60,16 @@ data:
       use_mapi_fee_quotes: {{  .Values.config.nodes.use_mapi_fee_quotes }}
     paymail:
       beef:
-        pulse_auth_token: {{  .Values.config.paymail.beef.pulse_auth_token }}
         pulse_url: {{  .Values.config.paymail.beef.pulse_url }}
         use_beef: {{  .Values.config.paymail.beef.use_beef }}
-      default_from_paymail: bux@{{  .Release.Name}}-server.{{  .Values.global.domainName }}
+      default_from_paymail: bux@{{  .Values.global.domainName }}
       default_note: {{  .Values.config.paymail.default_note }}
       domain_validation_enabled: {{  .Values.config.paymail.domain_validation_enabled }}
       domains:
-        - "{{  .Release.Name}}-server.{{  .Values.global.domainName }}"
+        - "{{  .Values.global.domainName }}"
+        {{- range .Values.config.paymail.domains }}
+        - "{{.}}"
+        {{- end }}
       enabled: {{  .Values.config.paymail.enabled }}
       sender_validation_enabled: {{  .Values.config.paymail.sender_validation_enabled }}
     request_logging: {{  .Values.config.request_logging }}

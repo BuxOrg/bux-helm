@@ -129,7 +129,6 @@ postgresql:
     postgresql:
       auth:
         username: bux
-        password: postgres
         database: buxwallet
   primary:
     persistentVolumeClaimRetentionPolicy:
@@ -139,8 +138,6 @@ postgresql:
 env:
   - name: DB_USER
     value: bux
-  - name: DB_PASSWORD
-    value: postgres
   - name: DB_NAME
     value: buxwallet
 

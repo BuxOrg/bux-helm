@@ -8,4 +8,4 @@ data:
   DB_HOST: '{{- .Release.Name}}-postgresql'
   BUX_SERVER_URL: 'http://{{- .Release.Name}}-server/v1'
   HTTP_SERVER_CORS_ALLOWEDDOMAINS: 'https://{{- .Release.Name}}-wallet.{{ .Values.global.domainName }}'
-  BUX_PAYMAIL_DOMAIN: '{{- .Release.Name}}-server.{{ .Values.global.domainName }}'
+  BUX_PAYMAIL_DOMAIN: '{{ .Values.global.domainName }}'

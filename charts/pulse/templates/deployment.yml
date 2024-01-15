@@ -56,6 +56,12 @@ spec:
               path: /status
               port: http
             initialDelaySeconds: 60
+          env:
+            - name: PULSE_HTTP_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-pulse
+                  key: pulse-auth-token
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.volumeMounts }}

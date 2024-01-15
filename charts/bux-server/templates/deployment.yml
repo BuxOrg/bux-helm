@@ -56,6 +56,16 @@ spec:
           env: 
             {{- toYaml . | nindent 12 }}
           {{- end }}
+            - name: BUX_DB_SQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-postgresql-server
+                  key: password
+            - name: BUX_PAYMAIL_BEEF_PULSE_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-pulse
+                  key: pulse-auth-token
             - name: BUX_AUTH_ADMIN_KEY
             {{- if .Values.global.adminkeySecret }}
               valueFrom:

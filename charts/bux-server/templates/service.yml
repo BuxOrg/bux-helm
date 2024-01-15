@@ -6,7 +6,7 @@ metadata:
     {{- include "bux-server.labels" . | nindent 4 }}
   {{ if has "alb" $.Values.ingressControllers }}
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: {{ include "bux-server.name" . }}.{{ .Values.global.domainName }}
+    external-dns.alpha.kubernetes.io/hostname: {{ .Values.global.domainName }}
   {{- end }}
 spec:
   type: {{ .Values.service.type }}

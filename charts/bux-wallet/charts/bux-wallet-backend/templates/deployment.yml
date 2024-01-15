@@ -56,6 +56,11 @@ spec:
           env: 
             {{- toYaml . | nindent 12 }} 
           {{- end }}
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-postgresql
+                  key: password
             - name: BUX_ADMIN_XPRIV
               {{- if .Values.global.adminkeySecret }}
               valueFrom:
