@@ -3,33 +3,59 @@ entries:
   bux:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2024-01-09T11:07:59.4586293+01:00"
+    created: "2024-01-15T13:49:58.5011095+01:00"
+    dependencies:
+    - condition: bux-server.enabled
+      name: bux-server
+      repository: ""
+    - condition: pulse.enabled
+      name: pulse
+      repository: ""
+    - condition: bux-console.enabled
+      name: bux-console
+      repository: ""
+    - condition: bux-wallet.enabled
+      name: bux-wallet
+      repository: ""
     description: A Helm chart for Kubernetes
-    digest: 57b7f3f6e7448192c52a38fd7de84d2bf9a774b5c42b3cea61abfa18b1dd25d7
+    digest: c1d8cca00c9226a2ee0b5f4ff7c302555e6749ad1a74bcfb980be33ad1853ec7
     name: bux
     type: application
     urls:
-    - https://buxorg.github.io/bux-helm/bux-0.2.0.tgz
+    - https://buxorg.github.io/bux-0.2.0.tgz
     version: 0.2.0
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2024-01-09T11:07:59.4293524+01:00"
+    created: "2024-01-15T13:49:58.4733949+01:00"
+    dependencies:
+    - condition: bux-server.enabled
+      name: bux-server
+      repository: ""
+    - condition: pulse.enabled
+      name: pulse
+      repository: ""
+    - condition: bux-console.enabled
+      name: bux-console
+      repository: ""
+    - condition: bux-wallet.enabled
+      name: bux-wallet
+      repository: ""
     description: A Helm chart for Kubernetes
     digest: d65345e20c4199efe603dd92b58d8439ecde0dfbd6eeb0a81431d7cbac6f311a
     name: bux
     type: application
     urls:
-    - https://buxorg.github.io/bux-helm/bux-0.1.0.tgz
+    - https://buxorg.github.io/bux-0.1.0.tgz
     version: 0.1.0
   bux-cli:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2024-01-09T11:07:59.4592591+01:00"
+    created: "2024-01-15T13:49:58.5018394+01:00"
     description: A Helm chart for Kubernetes
     digest: 192e35c9244ed08682093383ba2960504760fb9fd564d40ce401cac37a015552
     name: bux-cli
     type: application
     urls:
-    - https://buxorg.github.io/bux-helm/bux-cli-0.1.0.tgz
+    - https://buxorg.github.io/bux-cli-0.1.0.tgz
     version: 0.1.0
-generated: "2024-01-09T11:07:59.3941304+01:00"
+generated: "2024-01-15T13:49:58.4418204+01:00"
