@@ -8,7 +8,7 @@ global:
   tls: true
 
 image:
-  repository: 4chainstudio/bux-server
+  repository: buxorg/bux-server
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
