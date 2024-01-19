@@ -3,7 +3,7 @@ entries:
   bux:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2024-01-15T15:27:10.2684886+01:00"
+    created: "2024-01-19T11:56:30.0572088+01:00"
     dependencies:
     - condition: bux-server.enabled
       name: bux-server
@@ -18,7 +18,7 @@ entries:
       name: bux-wallet
       repository: ""
     description: A Helm chart for Kubernetes
-    digest: 0d663c54a0f996c93dd85055f0e2eeb034a6acb58ff7fd474a3d667c768c33c1
+    digest: 95135094ec27f99a713e0f7233bc41a4f13f88f2438bc40b5bce36dd599c9e39
     name: bux
     type: application
     urls:
@@ -26,7 +26,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2024-01-15T15:27:10.2391309+01:00"
+    created: "2024-01-19T11:56:30.0280356+01:00"
     dependencies:
     - condition: bux-server.enabled
       name: bux-server
@@ -50,7 +50,7 @@ entries:
   bux-cli:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2024-01-15T15:27:10.2756935+01:00"
+    created: "2024-01-19T11:56:30.0580709+01:00"
     description: A Helm chart for Kubernetes
     digest: 192e35c9244ed08682093383ba2960504760fb9fd564d40ce401cac37a015552
     name: bux-cli
@@ -58,4 +58,4 @@ entries:
     urls:
     - https://buxorg.github.io/bux-helm/bux-cli-0.1.0.tgz
     version: 0.1.0
-generated: "2024-01-15T15:27:10.2027636+01:00"
+generated: "2024-01-19T11:56:30.0000234+01:00"
