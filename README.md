@@ -1,5 +1,8 @@
 # Bux Components Chart Repository
 
+# :warning: This repository is deprecated. :warning: 
+## Use [spv-wallet-helm](https://github.com/bitcoin-sv/spv-wallet-helm) instead 
+
 ## Chart release process
 
 - Update appVersion in Chart.yaml for each component with a new image
